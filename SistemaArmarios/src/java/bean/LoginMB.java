@@ -48,7 +48,7 @@ public class LoginMB implements Serializable{
     }
 
     public boolean eFuncionario() {
-        return (this.estaLogado() && this.getUsuarioLogado().isEFuncionario());
+        return this.getUsuarioLogado().isEFuncionario();
     }
 
     public String verificaLogin() {
@@ -63,9 +63,9 @@ public class LoginMB implements Serializable{
             if (usuario.verificaLogin(login, senha)) {
                 usuarioLogado = usuario;
                 if (usuario.isEFuncionario()) {
-                    return ("/admin/index?faces-redirect=true");
+                    return ("admin/index?faces-redirect=true");
                 } else {
-                    return ("usuario/index?faces-redirect=true");
+                    return ("aluno/index?faces-redirect=true");
                 }
             }
         }
@@ -78,7 +78,7 @@ public class LoginMB implements Serializable{
     public String realizaLogout() {
         usuarioLogado = null;
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return ("/login?faces-redirect=true");
+        return ("/SistemaArmarios/faces/login.xhtml");
     }
 
 }

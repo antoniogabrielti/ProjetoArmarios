@@ -6,6 +6,17 @@ public class Aluno extends Usuario {
    private String email;
    private String telefone;
    private String matricula;
+   
+   public Aluno(){
+       
+   }
+   
+   public Aluno(String nome,String email,String telefone,String matricula){
+       this.nome=nome;
+       this.email=email;
+       this.telefone=telefone;
+       this.matricula=matricula;
+   }
 
     public String getNome() {
         return nome;
