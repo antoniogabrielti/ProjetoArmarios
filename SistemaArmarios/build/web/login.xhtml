@@ -23,12 +23,12 @@
                 <h:graphicImage id="faulogin" name="/images/FauLogoLogin.png"/><br></br><br></br>
             <h:form class="formlogin">
                     <h:outputLabel style="color:#ffffff;font-size: 25px;">
-                        <b>Login: </b></h:outputLabel><h:inputText style="margin-left: 5px;" id="login" value=""
+                        <b>Login: </b></h:outputLabel><h:inputText style="margin-left: 5px;" id="login" value="#{loginMB.login}"
                              styleClass="form-inline"/><br></br>
                  <h:outputLabel style="color:#ffffff; font-size: 25px;">
-                     <b>Senha: </b></h:outputLabel><h:inputSecret id="senha" value=""
+                     <b>Senha: </b></h:outputLabel><h:inputSecret id="senha" value="#{loginMB.senha}"
                              styleClass="form-inline"/><br></br><br></br> 
-                 <h:commandButton value="Entrar" action="#" id="btnlogin"
+                     <h:commandButton value="Entrar" action="#{loginMB.verificaLogin()}" id="btnlogin"
                                      styleClass="btn btn-default" />
                </h:form>
             </center></div></ui:insert>

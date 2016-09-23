@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./index.xhtml">
+    
+    <ui:define name="content">
+        <h:body>
+        <h:form class="table-responsive">
+            <h:dataTable class="table table-striped" var="usuario" value="#{usuarioMB.listaAlunos}" border="1">
+                <f:facet name="header">
+                    <h:outputText class="cabecalho" value="Tabela de Alunos" />
+                </f:facet>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText class="subcabecalho" value="Matricula" />
+                    </f:facet>
+                    <h:outputText id="idMatricula" value="#{usuario.matricula} "  />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText class="subcabecalho" value="Nome" />
+                    </f:facet>
+                    <h:outputText id="idNome" value="#{usuario.nome} "  />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText class="subcabecalho" value="Telefone" />
+                    </f:facet>
+                    <h:outputText id="idTelefone" value="#{usuario.telefone} " />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText class="subcabecalho" value="Email" />
+                    </f:facet>
+                    <h:outputText id="idEmail" value="#{usuario.email} " />
+                </h:column>
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputText class="subcabecalho" value="Operação" />
+                    </f:facet>
+                    <h:commandButton value="Editar " class="btn-warning" action="#{usuarioMB.editarUsuario(usuario)}"/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <h:commandButton class="btn-danger" value="Remover" action="#{usuarioMB.removerUsuario(usuario)}"/>
+                </h:column>
+                </h:dataTable>
+        </h:form>
+            </h:body>
+    </ui:define>
+
+</ui:composition>
