@@ -14,10 +14,12 @@ public class UsuarioMB {
 
 
     private List<Usuario> listaUsuarios;
-    private Usuario usuarioSelecionado;
+    private Aluno usuarioAluno;
+    private Funcionario usuarioFuncionario;
+    private Aluno usuarioSelecionadoAluno;
+    private Funcionario usuarioSelecionadoFunc;
 
     public UsuarioMB() {
-        usuarioSelecionado = new Usuario();
         listaUsuarios = new ArrayList<Usuario>();
         Funcionario f = new Funcionario();
         f.setLogin("admin");
@@ -42,13 +44,34 @@ public class UsuarioMB {
         listaUsuarios.add(d);
     }
     
-    public Usuario getUsuarioSelecionado() {
-        return usuarioSelecionado;
+    public Aluno getUsuarioSelecionadoAluno() {
+            return this.usuarioSelecionadoAluno;
     }
 
-    public void setUsuarioSelecionado(Usuario usuarioSelecionado) {
-        this.usuarioSelecionado = usuarioSelecionado;
+    public Aluno getUsuarioAluno() {
+        return usuarioAluno;
     }
+
+    public void setUsuarioAluno(Aluno usuarioAluno) {
+        this.usuarioAluno = usuarioAluno;
+    }
+
+    public Funcionario getUsuarioFuncionario() {
+        return usuarioFuncionario;
+    }
+
+    public void setUsuarioFuncionario(Funcionario usuarioFuncionario) {
+        this.usuarioFuncionario = usuarioFuncionario;
+    }
+    
+    
+
+    
+    public Funcionario getUsuarioSelecionadoFunc(){
+        return this.usuarioSelecionadoFunc;
+    }
+
+
     public List<Funcionario> getListaFuncionario(){
         List<Funcionario> listafunc = new ArrayList<Funcionario>();
         for(Usuario func : listaUsuarios){
@@ -77,34 +100,32 @@ public class UsuarioMB {
     }
     
 
-    public String novoUsuario(int opcao){
-        if(opcao==1){
-            usuarioSelecionado=new Funcionario();
-            return("/admin/formularioCadastro?faces-redirect=true");
-        }else{
-            usuarioSelecionado=new Aluno();
-            return("/aluno/formularioCadastro?faces-redirect=true");
-        }
+    public String novoAluno(){
+            usuarioAluno=new Aluno();
+            return("crudAluno/formularioAlunoCadastro.xhtml?faces-redirect=true");
+        
     }
 
-    public String adicionarUsuario(int opcao)
+    public String adicionarAluno()
     {
-        listaUsuarios.add(usuarioSelecionado);
-        return(this.novoUsuario(opcao));
+        listaUsuarios.add(usuarioAluno);
+        return("/admin/crudAluno/visualizarAlunos?faces-redirect=true");
     }
 
     public String editarUsuario(Usuario u){
         if(u.isEFuncionario()){
-            usuarioSelecionado=u;
-            return("/admin/formularioCadastro?faces-redirect=true");
+            this.usuarioSelecionadoFunc=new Funcionario();
+            usuarioSelecionadoFunc=(Funcionario)u;
+            return("/admin/formularioEditar?faces-redirect=true");
         }else{
-            usuarioSelecionado=u;
-            return("/aluno/formularioCadastro?faces-redirect=true");
+            this.usuarioSelecionadoAluno=new Aluno();
+            usuarioSelecionadoAluno=(Aluno)u;
+            return("/admin/crudAluno/formularioAlunoEditar?faces-redirect=true");
         }
     }
-    public String atualizarUsuario()
+    public String atualizarAluno()
     {
-        return("/admin/index?faces-redirect=true");
+        return("/admin/crudAluno/visualizarAlunos?faces-redirect=true");
     }
 
     public void removerUsuario(Usuario usuario){
