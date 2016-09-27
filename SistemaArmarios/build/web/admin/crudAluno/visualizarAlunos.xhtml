@@ -12,7 +12,7 @@
         <h:form class="table-responsive">
             <h:dataTable class="table table-striped" var="usuario" value="#{usuarioMB.listaAlunos}" border="1">
                 <f:facet name="header">
-                    <h:outputText class="cabecalho" value="Tabela de Alunos" />
+                    <h:outputText style="margin-left:560px;" value="Tabela de Alunos" />
                 </f:facet>
                 
                 <h:column>
@@ -23,25 +23,25 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText class="subcabecalho" value="Nome" />
+                        <h:outputText style="margin-left: 160px;" value="Nome" />
                     </f:facet>
-                    <h:outputText id="idNome" value="#{usuario.nome} "  />
+                    <center><h:outputText  id="idNome" value="#{usuario.nome} "  /></center>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText class="subcabecalho" value="Telefone" />
+                        <center><h:outputText class="subcabecalho" value="Telefone" /></center>
                     </f:facet>
-                    <h:outputText id="idTelefone" value="#{usuario.telefone} " />
+                    <center><h:outputText id="idTelefone" value="#{usuario.telefone} " /></center>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText class="subcabecalho" value="Email" />
+                        <center><h:outputText class="subcabecalho" value="Email" /></center>
                     </f:facet>
-                    <h:outputText id="idEmail" value="#{usuario.email} " />
+                    <center><h:outputText id="idEmail" value="#{usuario.email} " /></center>
                 </h:column>
                 <h:column >
                     <f:facet name="header">
-                        <h:outputText class="subcabecalho" value="Operação" />
+                        <h:outputText style="margin-left: 50px;" value="Operação" />
                     </f:facet>
                     <h:commandButton value="Editar " class="btn-warning" action="#{usuarioMB.editarUsuario(usuario)}"/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

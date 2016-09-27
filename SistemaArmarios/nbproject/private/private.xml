@@ -2,19 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/src/java/model/Emprestimo.java</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/web/admin/crudAluno/formularioAlunoCadastro.xhtml</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/web/admin/crudAluno/formularioAlunoEditar.xhtml</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/web/admin/crudAluno/visualizarAlunos.xhtml</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/src/java/model/Armario.java</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/src/java/bean/LoginMB.java</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/web/admin/crudArmario/formularioArmarioEditar.xhtml</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/src/java/bean/UsuarioMB.java</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/web/admin/index.xhtml</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/src/java/bean/ArmarioMB.java</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/web/admin/crudArmario/formularioArmarioCadastro.xhtml</file>
-            <file>file:/C:/Users/juliano/Desktop/ProjetoArmarios/SistemaArmarios/web/admin/crudArmario/visualizarArmarios.xhtml</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

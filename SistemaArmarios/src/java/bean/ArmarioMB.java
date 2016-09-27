@@ -4,18 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
-import model.Aluno;
-import model.Emprestimo;
+
 
 @Named
 @ApplicationScoped 
 public class ArmarioMB {
-/*            <li><a href="#">Armarios Disponiveis</a></li><!-- Realizar Emprestimo-->
-            <li><a href="#">Cadastrar Armário</a></li>
-            <li><a href="#">Visualizar Todos os Armários</a></li>
-            <li><a href="#">Armarios Ocupados</a></li><!-- Realizar Devolucao -->
-            <li><a href="#">Buscar Armario por Número</a></li>
-*/
+
 
     private List<Armario> listaArmarios;
     private Armario novoArmario;
@@ -73,9 +67,7 @@ public class ArmarioMB {
         }
         return listaArmarioDisponivel;
     }
-  /*  public List<Emprestimo> getListaArmariosOcupados(){
-        return listaEmprestimos;        
-    }*/
+
 
     public List<Armario> getListaArmarios() {
         return this.listaArmarios;
