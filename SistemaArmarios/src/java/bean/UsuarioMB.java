@@ -18,22 +18,28 @@ public class UsuarioMB {
     private Funcionario usuarioFuncionario;
     private Aluno usuarioSelecionadoAluno;
     private Funcionario usuarioSelecionadoFunc;
+    private boolean estaNoSubmenu;
 
     public UsuarioMB() {
+        this.estaNoSubmenu=false;
         listaUsuarios = new ArrayList<Usuario>();
         Funcionario f = new Funcionario();
         f.setLogin("admin");
         f.setSenha("admin");
         f.setEFuncionario(true);
         listaUsuarios.add(f);
-        Aluno a = new Aluno("Jussamara Fillipin","jussa@live.com","(51)8899-7766","1008698-4");
+        Aluno a = new Aluno("Jussamara Fillipin","jussa@live.com","(51)8899-7766","2004825-4");
         a.setLogin("aluno");
         a.setSenha("aluno");
         listaUsuarios.add(a);
-        Aluno b = new Aluno("Antonio Gabriel Fernandes Miranda","antoniogabrielmiranda@gmail.com","(51)8494-0123","1008587-1");
+        Aluno b = new Aluno("Antonio Gabriel Miranda","antoniogabrielmiranda@gmail.com","(51)8494-0123","1008587-1");
         b.setLogin("aluno2");
         b.setSenha("aluno2");
         listaUsuarios.add(b);
+        Aluno e = new Aluno("Antonio Ramos","antoniogabrielqi@gmail.com","(51)8566-2312","20070241-1");
+        e.setLogin("alunot");
+        e.setSenha("alunot");
+        listaUsuarios.add(e);
         Aluno c = new Aluno("Mariana","mariana@terra.com","(51)8240-8543","1008741-9");
         c.setLogin("aluno3");
         c.setSenha("aluno3");
@@ -102,8 +108,22 @@ public class UsuarioMB {
 
     public String novoAluno(){
             usuarioAluno=new Aluno();
-            return("crudAluno/formularioAlunoCadastro.xhtml?faces-redirect=true");
+            if(!this.estaNoSubmenu){
+                this.estaNoSubmenu=true;
+                return("formularioAlunoCadastro.xhtml?faces-redirect=true");
+            }else{
+                return("crudAluno/formularioAlunoCadastro.xhtml?faces-redirect=true");
+            }
+            
         
+    }
+    public String visualizarAlunos(){
+        if(this.estaNoSubmenu){
+            return("visualizarAlunos.xhtml?faces-redirect=true");
+        }else{
+            this.estaNoSubmenu=true;
+            return("../admin/crudAluno/visualizarAlunos.xhtml?faces-redirect=true");
+        }
     }
 
     public String adicionarAluno()
@@ -130,5 +150,9 @@ public class UsuarioMB {
 
     public void removerUsuario(Usuario usuario){
         listaUsuarios.remove(usuario);
+    }
+    public String retornarPrincipal(){
+        this.estaNoSubmenu=false;
+        return("/SistemaArmarios/faces/admin/index.xhtml");
     }
 }

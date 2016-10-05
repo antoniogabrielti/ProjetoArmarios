@@ -83,6 +83,11 @@ public class ArmarioMB {
             return("crudArmario/formularioArmarioCadastro.xhtml?faces-redirect=true");
         
     }
+        public String visualizarArmarios(){
+
+            return("../admin/crudArmario/visualizarArmarios.xhtml?faces-redirect=true");
+
+    }
 
     public String adicionarArmario()
     {

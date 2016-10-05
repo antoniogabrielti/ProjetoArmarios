@@ -8,8 +8,8 @@
 
     <ui:define name="content">
     <h:body>
-        <h:form class="table-responsive">
-            <h:dataTable class="table table-striped" var="armario" value="#{armarioMB.listaArmarios}" border="1">
+        <h:form styleClass="table-responsive">
+            <h:dataTable styleClass="table table-striped" var="armario" value="#{armarioMB.listaArmarios}" border="1">
                 <f:facet name="header">
                     <h:outputText style="margin-left:560px;" value="Tabela de Armarios" />
                 </f:facet>
@@ -24,15 +24,15 @@
                     <f:facet name="header">
                         <h:outputText style="margin-left:130px;" value="Situação Atual" />
                     </f:facet>
-                    <span style="margin-left:150px;" class="label #{armarioMB.getLabel(armario)}">#{armarioMB.getStatus(armario)}</span>
+                    <span style="margin-left:150px;" Class="label #{armarioMB.getLabel(armario)}">#{armarioMB.getStatus(armario)}</span>
                 </h:column>
                 <h:column >
                     <f:facet name="header">
                         <h:outputText style="margin-left:190px;"  value="Operação" />
                     </f:facet>
-                    <h:commandButton style="margin-left:150px;" value="Editar " class="btn-warning" action="#{armarioMB.editarArmario(armario)}"/>
+                    <h:commandButton style="margin-left:150px;" value="Editar " styleClass="btn btn-warning" action="#{armarioMB.editarArmario(armario)}"/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <h:commandButton class="btn-danger" value="Remover" action="#{armarioMB.removerArmario(armario)}"/>
+                        <h:commandButton styleClass="btn btn-danger" value="Remover" action="#{armarioMB.removerArmario(armario)}"/>
                 </h:column>
                 </h:dataTable>
         </h:form>
