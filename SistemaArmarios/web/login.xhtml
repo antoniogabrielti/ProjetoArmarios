@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+        <h:outputScript name="bootstrap/js/bootstrap.min.js" />
+        <h:outputScript name="jquery/jquery-3.1.0.min.js" />
+        <title>Login Sistema Armarios - FAUPUCRS</title>
+    </h:head>
+
+    <h:body>
+
+       
+        <ui:insert name="content">
+        <div id="content" class="center_content"><center>
+                <h:graphicImage id="faulogin" name="/images/FauLogoLogin.png"/><br></br><br></br>
+            <h:form class="formlogin">
+                    <h:outputLabel style="color:#ffffff;font-size: 25px;">
+                        <b>Login: </b></h:outputLabel><h:inputText style="margin-left: 5px;" id="login" value="#{usuarioMB.login}"
+                             styleClass="form-inline"/><br></br>
+                 <h:outputLabel style="color:#ffffff; font-size: 25px;">
+                     <b>Senha: </b></h:outputLabel><h:inputSecret id="senha" value="#{usuarioMB.senha}"
+                             styleClass="form-inline"/><br></br><br></br> 
+                     <h:commandButton value="Entrar" action="#{usuarioMB.verificaLogin()}" id="btnlogin"
+                                     styleClass="btn btn-default" />
+                     
+               </h:form>
+            </center></div></ui:insert>
+
+        <ui:insert name="bottom">
+        <div class="bottom" id="bottom"><center>  
+            <h:graphicImage id="puclogo" name="/images/logo_rodapePucrs.png"/>
+            <h4 style="color: #ffffff" id="textorodape">Sistema de Controle dos Armários - FAUPUCRS<br></br>PUCRS - Laboratorio de Conforto Ambiental</h4>
+            <h:graphicImage id="faulogo" name="/images/FauLogoRodape.png"/>
+            </center></div></ui:insert>
+         <h:messages id="idMensagem" showDetail="true" errorClass="mensagem"/>
+    </h:body>
+
+</html>
