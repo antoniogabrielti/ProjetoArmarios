@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import model.Aluno;
 import model.Armario;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-10-17T16:38:53")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-10-20T17:16:16")
 @StaticMetamodel(Emprestimo.class)
 public class Emprestimo_ { 
 

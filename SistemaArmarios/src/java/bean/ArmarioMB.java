@@ -64,17 +64,20 @@ public class ArmarioMB {
 
     public String novoArmario(){
             this.novoArmario=new Armario();
-            if(this.estaNoSubmenu){
-                return("formularioArmarioCadastro.xhtml?faces-redirect=true");
-            }else{
-                this.estaNoSubmenu=true;
-                return("/admin/crudArmario/fomularioArmarioCadastro?faces-redirect=true");   
-            }
+        if(this.estaNoSubmenu){
+            return("/admin/crudArmario/formularioArmarioCadastro.xhtml?faces-redirect=true");
+        }else{
+            this.estaNoSubmenu=true;
+            return("/admin/crudArmario/formularioArmarioCadastro.xhtml?faces-redirect=true");
+        } 
     }
         public String visualizarArmarios(){
+        if(this.estaNoSubmenu){
+            return("/admin/crudArmario/visualizarArmarios.xhtml?faces-redirect=true");
+        }else{
             this.estaNoSubmenu=true;
-            return("crudArmario/visualizarArmarios.xhtml?faces-redirect=true");
-
+            return("/admin/crudArmario/visualizarArmarios.xhtml?faces-redirect=true");
+        }
     }
 
     public String adicionarArmario()

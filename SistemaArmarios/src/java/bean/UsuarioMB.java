@@ -149,21 +149,21 @@ public class UsuarioMB {
 
     public String novoAluno(){
             usuarioAluno=new Aluno();
-            if(this.estaNoSubmenu){
-                return("formularioAlunoCadastro?faces-redirect=true"); 
-            }else{
-                this.estaNoSubmenu=true;
-                return("crudAluno/formularioAlunoCadastro.xhtml?faces-redirect=true");
-            }   
+        if(this.estaNoSubmenu){
+            return("/admin/crudAluno/formularioAlunoCadastro.xhtml?faces-redirect=true");
+        }else{
+            this.estaNoSubmenu=true;
+            return("/admin/crudAluno/formularioAlunoCadastro.xhtml?faces-redirect=true");
+        }   
     }
     public String buscarAluno(){
         if(this.estaNoSubmenu){
             this.setElementoBusca("");
-            return ("buscaAluno?faces-redirect=true");
+            return("/admin/crudAluno/buscaAluno.xhtml?faces-redirect=true");
         }else{
-            this.estaNoSubmenu=true;
             this.setElementoBusca("");
-            return("crudAluno/buscaAluno.xhtml?faces-redirect=true");
+            this.estaNoSubmenu=true;
+            return("/admin/crudAluno/buscaAluno.xhtml?faces-redirect=true");
         }
     }
     

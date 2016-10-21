@@ -105,7 +105,7 @@
                                     <li class="dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu Armario <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
-                                            <li><h:commandLink action="crudEmprestimo/realizarEmprestimo.xhtml" value="Armários Disponiveis"></h:commandLink></li>
+                                            <li><h:commandLink action="/admin/crudEmprestimo/realizarEmprestimo.xhtml?faces-redirect=true" value="Armários Disponiveis"></h:commandLink></li>
                                             <li><h:commandLink action="#{armarioMB.novoArmario}" value="Cadastrar Armário"></h:commandLink></li>
                                             <li><h:commandLink action="#{armarioMB.visualizarArmarios()}" value="Visualizar Todos os Armários"></h:commandLink></li>
                                             <li><h:outputText value="Armarios Ocupados"></h:outputText></li><!-- Realizar Devolucao -->
@@ -115,8 +115,8 @@
                                     <li class="dropdown">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu Emprestimos <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
-                                            <li><h:commandLink action="crudEmprestimo/realizarEmprestimo.xhtml" value="Realizar Emprestimo"></h:commandLink></li><!-- Realizar Emprestimo-->
-                                            <li><h:commandLink action="crudEmprestimo/visualizarEmprestimos.xhtml" value="Visualizar Emprestimos"></h:commandLink></li>
+                                            <li><h:commandLink action="/admin/crudEmprestimo/realizarEmprestimo.xhtml?faces-redirect=true" value="Realizar Emprestimo"></h:commandLink></li><!-- Realizar Emprestimo-->
+                                            <li><h:commandLink action="/admin/crudEmprestimo/visualizarEmprestimos.xhtml?faces-redirect=true" value="Visualizar Emprestimos"></h:commandLink></li>
                                             <li><h:outputText value="Buscar Emprestimo"></h:outputText></li><!-- Realizar Devolucao -->
                                         </ul>
                                     </li>

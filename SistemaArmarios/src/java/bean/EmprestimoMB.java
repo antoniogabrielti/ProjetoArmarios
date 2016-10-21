@@ -11,6 +11,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import model.Usuario;
+import rn.ArmarioRN;
+import rn.EmprestimoRN;
+import rn.UsuarioRN;
 import static util.DateUtil.dateToString;
 import static util.DateUtil.stringToDate;
 
@@ -28,40 +31,23 @@ public class EmprestimoMB {
     private String dtDevolucao;
     
     @Inject
-    UsuarioMB userMB;
+    EmprestimoRN emprestimoRN;
     
     @Inject
-    ArmarioMB armarioBean;
+    UsuarioRN userRN;
+    
+    @Inject
+    ArmarioRN armarioRN;
     
     public EmprestimoMB() throws ParseException{
         armarioSelecionado=new Armario();
         alunoSelecionado=new Aluno();
         ListaAlunos=new ArrayList<Aluno>();
         ListaEmprestimos = new ArrayList<Emprestimo>();
-        Emprestimo emprest1 = new Emprestimo();
-        //emprest1.setArmario(new Armario(5,false));
-        emprest1.setProprietario(new Aluno("Jussamara Fillipin","jussa@live.com","(51)8899-7766","2004825-4"));
-        Date dt1 = new Date();
-        dt1 = stringToDate("08/03/2016");
-        emprest1.setDataEmprestimo(dt1);
-        Date dt2 = new Date();
-        dt2 = stringToDate("25/12/2016");
-        emprest1.setDataDevolucao(dt2);
-        ListaEmprestimos.add(emprest1);
-        Emprestimo emprest2 = new Emprestimo();
-        //emprest2.setArmario(new Armario(6,false));
-        emprest2.setProprietario(new Aluno("Antonio Gabriel Miranda","antoniogabrielmiranda@gmail.com","(51)8494-0123","1008587-1"));
-        Date dt3 = new Date();
-        dt3 = stringToDate("14/05/2016");
-        emprest2.setDataEmprestimo(dt3);
-        Date dt4 = new Date();
-        dt4 = stringToDate("05/12/2016");
-        emprest2.setDataDevolucao(dt4);
-        ListaEmprestimos.add(emprest2);  
     }
 
     public List<Emprestimo> getListaEmprestimos() {
-        return ListaEmprestimos;
+        return emprestimoRN.listar();
     }
 
     public void setListaEmprestimos(List<Emprestimo> ListaEmprestimos) {
@@ -123,29 +109,7 @@ public class EmprestimoMB {
         this.setArmarioSelecionado(armarioSelecionado);
         return("/admin/crudEmprestimo/buscaAluno?faces-redirect=true");
     }
-    public List<Aluno> BuscaPorMatricula(String Matricula){
-        Aluno AlunoAchou = new Aluno();
-        for(Aluno alum : this.userMB.getListaAlunos()){
-            if(alum.getMatricula().equalsIgnoreCase(Matricula)){
-                    AlunoAchou=alum;
-                    this.ListaAlunos.add(AlunoAchou);
-
-                }
-            }
-                     return this.ListaAlunos;
-    }
-    public List<Aluno> BuscaPorNome(String Nome){
-        Aluno AlunoEncontrou = new Aluno();
-        for(Aluno Using : this.userMB.getListaAlunos()){
-            int verifica = Using.getNome().indexOf(Nome);
-            if(verifica>=0){
-                AlunoEncontrou = Using;
-                this.ListaAlunos.add(AlunoEncontrou);
-            }
-        }
-
-            return this.ListaAlunos;
-    }
+    
     public String EmprestimoFormulario(Aluno al){
         this.alunoSelecionado= new Aluno();
         this.setAlunoSelecionado(al);
@@ -155,13 +119,15 @@ public class EmprestimoMB {
     public String finalizarEmprestimo() throws ParseException{
         Emprestimo emp = new Emprestimo();
         this.armarioSelecionado.setEstaDisponivel(false);
+        armarioRN.salvar(armarioSelecionado);
         emp.setArmario(this.armarioSelecionado);
         emp.setProprietario(this.alunoSelecionado);
         Date dataEmprestimo = stringToDate(this.dtEmprestimo);
         emp.setDataEmprestimo(dataEmprestimo);
         Date dataDevolucao = stringToDate(this.dtDevolucao);
         emp.setDataDevolucao(dataDevolucao);
-        ListaEmprestimos.add(emp);
+        
+        emprestimoRN.salvar(emp);
         return "/admin/crudEmprestimo/visualizarEmprestimos?faces-redirect=true";
     }
     
@@ -172,27 +138,24 @@ public class EmprestimoMB {
     
     public String devolucao(Emprestimo emprestimo){
         emprestimo.getArmario().setEstaDisponivel(true);
-        if(emprestimo.getArmario().getNumero()==5 || emprestimo.getArmario().getNumero()==6){
-            if(emprestimo.getArmario().getNumero()==5){
-                Armario arm1 = new Armario();
-                arm1 = this.armarioBean.getListaArmarios().get(4);
-                arm1.setEstaDisponivel(true);
-            }else{
-                Armario arm2 = new Armario();
-                arm2 = this.armarioBean.getListaArmarios().get(5);
-                arm2.setEstaDisponivel(true);
-            }
-        }
-        this.ListaEmprestimos.remove(emprestimo);
+        armarioRN.salvar(emprestimo.getArmario());
+        emprestimoRN.remover(emprestimo);
         return "/admin/crudEmprestimo/visualizarEmprestimos?faces-redirect=true";
     }
     
     public String resultadoBuscaAluno(){
         this.ListaAlunos = new ArrayList<Aluno>();
-        if(!this.BuscaPorMatricula(this.ElementoBusca).isEmpty() || !this.BuscaPorNome(this.ElementoBusca).isEmpty()){
-            return "/admin/crudEmprestimo/resultadoAluno?faces-redirect=true";
+        ListaAlunos = userRN.buscaFiltroMatriculaAluno(ElementoBusca);
+        if(ListaAlunos.isEmpty()){
+            ListaAlunos = userRN.buscaFiltroNomeAluno(ElementoBusca);
+            if(ListaAlunos.isEmpty()){
+                this.setElementoBusca("");
+                return "buscaAluno?faces-redirect=true";
+            }else{
+                return "resultadoAluno?faces-redirect=true";
+            }
         }else{
-        return "/admin/crudEmprestimo/buscaAluno?faces-redirect=true";
+          return "resultadoAluno?faces-redirect=true";
         }
     }
 }
