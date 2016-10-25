@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="./../index.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <ui:define name="content">
+        <h:body>
+        <h:form styleClass="table-responsive">
+            <h:dataTable styleClass="table table-striped" var="armario" value="#{armarioMB.listaBusca}" border="1">
+                <f:facet name="header">
+                    <h:outputText style="margin-left:560px;" value="Tabela de Armarios" />
+                </f:facet>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText style="margin-left:80px;" value="Número do Armário" />
+                    </f:facet>
+                    <h:outputText style="margin-left:150px;" id="idNumArmario" value="#{armario.numero} "  />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText style="margin-left:130px;" value="Situação Atual" />
+                    </f:facet>
+                    <span style="margin-left:150px;" Class="label #{armarioMB.getLabel(armario)}">#{armarioMB.getStatus(armario)}</span>
+                </h:column>
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputText style="margin-left: 50px;" value="Operação" />
+                    </f:facet>
+                    <h:commandButton value="Locar " styleClass="btn btn-success" disabled="#{armarioMB.statusButton1()}" action="#{emprestimoMB.SelecionaArmario(armario)}"/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <h:commandButton styleClass="btn btn-danger" disabled ="#{armarioMB.statusButton2()}" value="Devolver" action="#{armarioMB.DevolverArmario(emprestimoMB.buscaEmprestimoArmario(armario))}"/>
+                </h:column>
+                </h:dataTable>
+        </h:form>
+            </h:body>
+    </ui:define>
+
+</ui:composition>
+
