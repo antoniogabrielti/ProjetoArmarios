@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="bootstrap/css/bootstrap.min.css" />
+        <h:outputScript name="jquery/jquery-3.1.0.min.js"/>
+        <h:outputScript name="bootstrap/js/bootstrap.min.js"/>
+        
+        <style>
+            /* Remove the navbar's default margin-bottom and rounded borders */
+            .navbar {
+                margin-bottom: 0;
+                border-radius: 0;
+            }
+
+
+            /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+            .row.content {height: 450px}
+
+            /* Set gray background color and 100% height */
+            .sidenav {
+                padding-top: 20px;
+                background-color: #f1f1f1;
+                height: 100%;
+            }
+
+            /* Set black background color, white text and some padding */
+            #bottom {
+                float: left;
+                position: absolute;
+                bottom:0;
+                background-color: #AAA8A9;
+                width: 100%;
+                padding: 5px;
+                margin: 0px 0px 0px 0px;
+            }
+            #puclogo{
+                float: left;
+                margin-left: 440px;
+                height: 60px;
+            }
+            #textorodape{
+                margin-left: 10px;
+                float: left;
+            }
+            #faulogo{
+                float: left;
+                height: 60px;
+            }
+
+            /* On small screens, set height to 'auto' for sidenav and grid */
+            @media screen and (max-width: 767px) {
+                .sidenav {
+                    height: auto;
+                    padding: 15px;
+                }
+                #bottom{
+                    display:none;
+                }
+                #puclogo{
+                    display: none;
+                }
+                #faulogo{
+                    display:none;
+                }
+                #textorodape{
+                    display: none;
+                }
+                .row.content {height:auto;}
+            }
+        </style>
+
+
+
+        <title>Painel Funcionario</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                <h:form>
+                    <nav class="navbar navbar-inverse">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#{usuarioMB.retornarPrincipal()}">Painel Funcionario</a>
+                            </div>
+                            <div class="collapse navbar-collapse" id="myNavbar">
+                                <ul class="nav navbar-nav">
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu Aluno <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+
+                                            <li><h:commandLink action="#{usuarioMB.visualizarAlunos()}" value ="Visualizar Todos"></h:commandLink></li>
+                                            <li><h:commandLink action="#{usuarioMB.novoAluno()}" value="Cadastrar Novo"></h:commandLink></li>
+                                            <li><h:commandLink action="#{usuarioMB.buscarAluno()}" value="Buscar Aluno"></h:commandLink></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu Funcionario <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><h:outputText value="Visualizar Todos"></h:outputText></li>
+                                            <li><h:outputText value="Cadastrar Novo"></h:outputText></li>
+                                            <li><h:outputText value="Buscar Por Matricula"></h:outputText></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu Armario <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><h:commandLink action="/admin/crudEmprestimo/realizarEmprestimo.xhtml?faces-redirect=true" value="Armários Disponiveis"></h:commandLink></li>
+                                            <li><h:commandLink action="#{armarioMB.novoArmario}" value="Cadastrar Armário"></h:commandLink></li>
+                                            <li><h:commandLink action="#{armarioMB.visualizarArmarios()}" value="Visualizar Todos os Armários"></h:commandLink></li>
+                                            <li><h:commandLink action="/admin/crudArmario/visualizarArmariosOcupados.xhtml?faces-redirect=true" value="Armarios Ocupados"></h:commandLink></li>
+                                            <li><h:commandLink action="#{armarioMB.irBuscaArmario()}" value="Buscar Armário Por Número"></h:commandLink></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu Emprestimos <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><h:commandLink action="/admin/crudEmprestimo/realizarEmprestimo.xhtml?faces-redirect=true" value="Realizar Emprestimo"></h:commandLink></li><!-- Realizar Emprestimo-->
+                                            <li><h:commandLink action="/admin/crudEmprestimo/visualizarEmprestimos.xhtml?faces-redirect=true" value="Visualizar Emprestimos"></h:commandLink></li>
+                                            <li><h:commandLink action="#{emprestimoMB.IrBuscaElemento()}" value="Buscar Emprestimo"></h:commandLink></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><h:commandLink action="#{usuarioMB.realizaLogout()}" value="Sair "><span class="glyphicon glyphicon-log-in"></span></h:commandLink></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </h:form> 
+
+            </ui:insert>
+        </div>
+        <ui:insert name="content"><div>    
+                <div id="content" class="right_content">
+
+                    <div class="container-fluid text-center">
+                        <div class="row content">
+                            <div class="col-sm-8 text-left">
+                                <h1>Bem Vindo</h1>
+                                <p>Olá este é o painel de funcionários do sistema controle de armários, no qual é possível gerênciar alunos e funcionarios
+                                    que utilizam o sistema. Também é possível realizar todas funcões refente ao emprestimo e controle de armários.</p>
+                                <h3>Time Desenvolvedor</h3>
+                                <p>Antônio Gabriel Miranda e Jussamara Fillipin</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div></ui:insert>
+
+        <ui:insert name="bottom">
+            <div class="bottom" id="bottom"><center>  
+                    <h:graphicImage id="puclogo" name="/images/logo_rodapePucrs.png"/>
+                    <h4 style="color: #ffffff" id="textorodape">Sistema de Controle dos Armários - FAUPUCRS<br></br>PUCRS - Laboratorio de Conforto Ambiental</h4>
+                    <h:graphicImage id="faulogo" name="/images/FauLogoRodape.png"/>
+                </center></div></ui:insert>
+    </h:body>
+
+</html>

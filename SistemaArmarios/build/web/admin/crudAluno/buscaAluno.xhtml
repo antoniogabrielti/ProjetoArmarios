@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="./../index.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <div id="content" class="center_content"><center>
+                <br></br><br></br><br></br><center><h2><span class="label label-primary">Pesquisar Aluno</span></h2></center><br></br>
+            <h:form class="formlogin">
+                    <h:outputLabel style="color:#843534;font-size: 18px;">
+                        <b>informe a matricula ou nome do aluno: </b></h:outputLabel><h:inputText style="margin-left: 5px; width: 250px;" id="login" value="#{usuarioMB.elementoBusca}"
+                             styleClass="form-group-sm"/>
+                        &nbsp;&nbsp;&nbsp;
+                        <h:commandButton value="Buscar" action="#{usuarioMB.resultadoBuscaAluno()}" id="btnbusca"
+                                     styleClass="btn btn-primary" />
+                        <br></br><br></br><br></br>
+                        <h:outputLabel style="visibility: #{usuarioMB.buscamsg};color:red;font-size: 16px;"><b>Aluno não encontrado, por favor revise o que foi digitado na busca<br></br>caso a informação esteja correta use o botão abaixo para cadastrar o aluno!!!</b></h:outputLabel>
+                        <br></br><h:commandButton value="Cadastrar Novo Aluno" style="visibility: #{usuarioMB.buscamsg};" action="#{usuarioMB.novoAluno()}" id="btnCadastrar" styleClass="btn btn-default"/>
+               </h:form>
+            </center></div>
+    </ui:define>
+
+</ui:composition>
