@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="./../index.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+<h:body>
+        <h:form styleClass="table-responsive">
+            <h:dataTable styleClass="table table-striped" var="emprestimo" value="#{emprestimoMB.listaBuscaEmprestimo}" border="1">
+                <f:facet name="header">
+                    <h:outputText style="margin-left:560px;" value="Listagem de Emprestimos" />
+                </f:facet>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText style="margin-left:75px;" value="Número Armário" />
+                    </f:facet>
+                    <center><h:outputText id="numarmario" value="#{emprestimo.armario.numero} "  /></center>
+                </h:column>
+                <h:column><center>
+                    <f:facet name="header">
+                        <h:outputText style="margin-left: 50px;" value="Status" />
+                    </f:facet>
+                    <span  Class="label #{armarioMB.getLabel(emprestimo.armario)}">#{armarioMB.getStatus(emprestimo.armario)}</span>
+                    </center></h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <center><h:outputText  value="Matricula Aluno" /></center>
+                    </f:facet>
+                    <center><h:commandLink id="matricula" action="#{emprestimoMB.detalheProprietario(emprestimo.proprietario.matricula)}" value="#{emprestimo.proprietario.matricula} " /></center>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <center><h:outputText  value="Nome do Aluno" /></center>
+                    </f:facet>
+                    <center><h:outputText id="nome" value="#{emprestimo.proprietario.nome} " /></center>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <center><h:outputText  value="Data do Emprestimo" /></center>
+                    </f:facet>
+                    <center><h:outputText id="dtemprestimo" value="#{emprestimoMB.processarData(emprestimo.dataEmprestimo)} " /></center>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <center><h:outputText  value="Previsão de Devolução" /></center>
+                    </f:facet>
+                    <center><h:outputText id="dtDevolucao" value="#{emprestimoMB.processarData(emprestimo.dataDevolucao)} " /></center>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <center><h:outputText  value="Operação" /></center>
+                    </f:facet>
+                    <center><h:commandButton id="btnDevolver" styleClass="btn btn-primary" action="#{armarioMB.DevolverArmario(emprestimo)}" value="Devolver" /></center>
+                </h:column>
+                </h:dataTable>
+        </h:form>
+            </h:body>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="./../index.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <div id="content" class="center_content">
+            <center><h2><span class="label label-primary">Cadastro de Aluno</span></h2></center><br></br>
+            <h:form class="form-horizontal">
+                <div class="form-group">
+                    <h:outputLabel class="control-label col-sm-5">
+                        <b>Matricula: </b></h:outputLabel>
+                    <div class="col-sm-7">
+                        <h:inputText class="form-control" style="margin-left: 5px; width: 300px;" id="matricula" value="#{usuarioMB.usuarioAluno.matricula}"/><br></br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel class="control-label col-sm-5">
+                        <b>Nome do Aluno: </b></h:outputLabel>
+                    <div class="col-sm-7">
+                        <h:inputText class="form-control" style="margin-left: 5px; width: 300px;" id="nome" value="#{usuarioMB.usuarioAluno.nome}"/><br></br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel class="control-label col-sm-5">
+                        <b>Email: </b></h:outputLabel>
+                    <div class="col-sm-7">
+                        <h:inputText class="form-control" style="margin-left: 5px; width: 300px;" id="email" value="#{usuarioMB.usuarioAluno.email}"/><br></br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel class="control-label col-sm-5">
+                        <b>Telefone: </b></h:outputLabel>
+                    <div class="col-sm-7">
+                        <h:inputText class="form-control" style="margin-left: 5px; width: 300px;" id="telefone" value="#{usuarioMB.usuarioAluno.telefone}"/><br></br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel class="control-label col-sm-5">
+                        <b>Login: </b></h:outputLabel>
+                    <div class="col-sm-7">
+                        <h:inputText class="form-control" style="margin-left: 5px; width: 300px;" id="login" value="#{usuarioMB.usuarioAluno.login}"/><br></br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel class="control-label col-sm-5">
+                        <b>Senha: </b></h:outputLabel>
+                    <div class="col-sm-7">
+                        <h:inputSecret class="form-control" style="margin-left: 5px; width: 300px;" id="senha" value="#{usuarioMB.usuarioAluno.senha}"/><br></br>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-5 col-sm-2">
+                      <h:commandButton value="Cadastrar" action="#{emprestimoMB.adicionarAluno(usuarioMB.usuarioAluno)}" id="btneditar"
+                                     styleClass="btn btn-success" />
+                  </div>
+                </div>
+               </h:form>
+            </div>
+    </ui:define>
+
+</ui:composition>

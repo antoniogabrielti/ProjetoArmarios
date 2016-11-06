@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="./../index.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content"><center>
+            <h:form>
+        <b><a href="#" class="list-group-item active">RESULTADO - escolha entre um dos alunos encontrado:</a></b>
+        <ui:repeat var="aluno"  value="#{emprestimoMB.listaAlunos}">
+            <h:commandLink action="#{emprestimoMB.EmprestimoFormulario(aluno)}" class="list-group-item"><b>Nome:</b> #{aluno.nome} <b>/  Matricula:</b> #{aluno.matricula}</h:commandLink>
+        </ui:repeat>
+            </h:form>
+        </center></ui:define>
+
+</ui:composition>

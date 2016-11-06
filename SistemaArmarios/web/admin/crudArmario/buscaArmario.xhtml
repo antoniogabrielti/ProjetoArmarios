@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="./../index.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <div id="content" class="center_content"><center>
+                <br></br><br></br><br></br><center><h2><span class="label label-success">Pesquisar Armário</span></h2></center><br></br>
+            <h:form class="formlogin">
+                    <h:outputLabel style="color:#843534;font-size: 18px;">
+                        <b>informe o número do armário para busca: </b></h:outputLabel><h:inputText style="margin-left: 5px; width: 250px;" id="login" value="#{armarioMB.numBusca}"
+                             styleClass="form-group-sm"/>
+                        &nbsp;&nbsp;&nbsp;
+                        <h:commandButton value="Buscar" action="#{armarioMB.resultadoBuscaArmario()}" id="btnbusca"
+                                     styleClass="btn btn-primary" />
+               </h:form>
+            </center></div>
+    </ui:define>
+
+</ui:composition>
